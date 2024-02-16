@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-rs
+spec:
+  type: LoadBalancer
+  selector:
+     app: swiggy
+
+  ports:
+    - port: 80
+      targetPort: 80
+
