@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: devops1
+spec:
+  selector:
+    matchLabels:
+      app: swiggy
+  template:
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+        containers:
+          - name: cont-2
+            image:  shaikmustafa/dm
+            ports:
+             - containerPort: 80
+
