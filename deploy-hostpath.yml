@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: swiggy
+  template:
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+      containers:
+        - name: cont-1
+          image: ubuntu
+          ports:
+            - containerPort: 80
+          command: ["/bin/bash", "-c", "while true; do echo welcome to flm;  done"]
+          volumeMounts:
+            - name: flm-volume
+              mountPath: "/tmp/devops"
+
+
+      volumes:
+        - name: flm-volume
+          hostPath:
+            path: /tmp/data
+
