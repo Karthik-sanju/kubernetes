@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata: 
+  name: avengers
+spec: 
+  hard: 
+    limits.cpu: "200m"
+    requests.cpu: "120m"
+    limits.memory: "38Mi"
+    requests.memory: "12Mi"
