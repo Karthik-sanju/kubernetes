@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flm-service
+spec:
+  type: ClusterIP
+  selector:
+    env: dev
+  ports:
+    - port: 80
+      targetPort: 80
