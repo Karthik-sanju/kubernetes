@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kt
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zomoto
+  template:
+    metadata:
+      labels:
+        app: zomoto
+    spec:
+      containers:
+        - name: cont-1
+          image: ubuntu
+          command: ["/bin/bash", "-c", "sleep 100"]
+          volumeMounts:
+            - name: naresh
+              mountPath: "/tmp/tcs"
+     
+      volumes:
+        - name: naresh
+          persistentVolumeClaim:
+            claimName: devops
+
+
+
