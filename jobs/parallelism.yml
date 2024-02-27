@@ -1,0 +1,17 @@
+---
+apiVersion:  batch/v1
+kind: Job
+metadata:
+  name: tcs
+spec:
+  parallelism: 3
+  activeDeadlineSeconds: 10
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+        - name: cont-12
+          image: ubuntu
+          command: ["/bin/bash", "-c", "mkdir floder123; sleep 30"]
+      restartPolicy: Never    

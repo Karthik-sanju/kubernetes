@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-1
+spec:
+  initContainers:
+    - name: flm
+      image: ubuntu
+      command: ["/bin/bash", "-c", "echo welcome to Frontlines media, we learning devops > /tmp/myvolume/devops; sleep 20"]
+      volumeMounts:
+        - name: myvolume
+          mountPath: "/tmp/myvolume"
+  containers:
+    - name: cont-1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo  'cat /tmp/myvolume/devops'; sleep 10; done "]        
+      volumeMounts:
+        - name: myvolume
+          mountPath: "/tmp/myvolume"
+
+  volumes:
+    - name: myvolume
+      emptyDir: {}        
+
+
+

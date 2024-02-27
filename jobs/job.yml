@@ -1,0 +1,22 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata: 
+  name: job-1
+spec: 
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+        - name: cont-123
+          image: ubuntu
+          command: ["bin/bash", "-c", "sudo apt update -y; sleep 130"]
+          args:
+            - |
+              sudo apt update -y
+              touch karthik
+              mkdir kanna
+              sleep 100
+      restartPolicy: Never
+

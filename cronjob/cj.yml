@@ -1,0 +1,22 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+   name: aws-and-devops
+spec:
+  schedule: "* * * * * "
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cont-1
+              image: ubuntu
+              command: ["/bin/bash", "-c"]
+              args:
+                - |
+                  sudo apt update -y
+                  touch karthik
+                  mkdir bunny
+                  sleep 130
+          restartPolicy: Never
